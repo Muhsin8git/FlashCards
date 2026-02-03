@@ -5,9 +5,9 @@ import random
 
 to_learn ={}
 try:
-    file =pandas.read_csv("./data/words_to_learn.csv")
+    file =pandas.read_csv("./words_to_learn.csv")
 except FileNotFoundError:
-    original_file = pandas.read_csv("./data/french_words.csv")
+    original_file = pandas.read_csv("./french_words.csv")
     to_learn = original_file.to_dict(orient="records")
 else:
     to_learn = file.to_dict(orient="records")
@@ -28,7 +28,7 @@ def flip_card():
 def known():
     to_learn.remove(current_card)
     data =pandas.DataFrame(to_learn)
-    data.to_csv("./data/words_to_learn.csv", index=False)
+    data.to_csv("./words_to_learn.csv", index=False)
     next_card()
 
 BACKGROUND_COLOR = "#B1DDC6"
